@@ -127,7 +127,7 @@ public class Database {
         }
         else 
         {
-            Collections.sort(list ,Collections.reverseOrder());
+            Collections.sort(ToSort ,Collections.reverseOrder());
         }
         return ToSort;
     }
