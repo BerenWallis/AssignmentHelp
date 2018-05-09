@@ -197,6 +197,11 @@ public class Database {
                 } );
                 break;
         }
+        list<String> ret;
+        for( Entry<String, Content> i : ToSort)
+        {
+            ret.add(i.getValue)
+        }
 
         return ToSort;
     }
