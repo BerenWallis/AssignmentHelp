@@ -112,97 +112,17 @@ public class Database {
 
 
     }
-    public List<Entry<String, Content>> Sort(Boolean dsc, int col)
+    public List<Content> Sort(Boolean dsc)
     {
-        List<Entry<String, Content>> ToSort = new ArrayList<Entry<String, Content>>(DB.entrySet());
-        List<String> Keys;
-        switch(col) //For speed, Switch statement is outside sort
+        list<String> ToSort;
+        Iterator it = DB.entrySet().iterator();
+        while (it.hasNext()) 
         {
-            case 0:
-                Collections.sort( ToSort, new Comparator<Map.Entry<String, Content>>()
-                {
-                    @Override
-                    public int compare(Entry<String, Content> arg0, Entry<String, Content> arg1) {
-                        if (dsc)
-                        {
-                            return (arg0.getKey()).compareTo( arg1.getKey() );
-                        }
-                        return -(arg0.getKey()).compareTo( arg1.getKey() );
-                    }
-                } );
-                break;
-            case 1:
-                Collections.sort( ToSort, new Comparator<Map.Entry<String, Content>>()
-                {
-                    @Override
-                    public int compare(Entry<String, Content> arg0, Entry<String, Content> arg1) {
-                        if (dsc)
-                        {
-                            return (arg0.getValue().Name).compareTo( arg1.getValue().Name );
-                        }
-                        return -(arg0.getValue().Name).compareTo( arg1.getValue().Name );
-                    }
-                } );
-                break;
-            case 2:
-                Collections.sort( ToSort, new Comparator<Map.Entry<String, Content>>()
-                {
-                    @Override
-                    public int compare(Entry<String, Content> arg0, Entry<String, Content> arg1) {
-                        if (dsc)
-                        {
-                            return (arg0.getValue().ReleaseDate).compareTo( arg1.getValue().ReleaseDate );
-                        }
-                        return -(arg0.getValue().ReleaseDate).compareTo( arg1.getValue().ReleaseDate );
-                    }
-                } );
-                break;
-            case 3:
-                Collections.sort( ToSort, new Comparator<Map.Entry<String, Content>>()
-                {
-                    @Override
-                    public int compare(Entry<String, Content> arg0, Entry<String, Content> arg1) {
-                        if (dsc)
-                        {
-                            return Integer.compare(arg0.getValue().NumberOfCopies, arg1.getValue().NumberOfCopies);
-                        }
-                        return -Integer.compare(arg0.getValue().NumberOfCopies, arg1.getValue().NumberOfCopies);
-                    }
-                } );
-                break;
-            case 4:
-                Collections.sort( ToSort, new Comparator<Map.Entry<String, Content>>()
-                {
-                    @Override
-                    public int compare(Entry<String, Content> arg0, Entry<String, Content> arg1) {
-                        if (dsc)
-                        {
-                            return Integer.compare(arg0.getValue().FilmLength, arg1.getValue().FilmLength);
-                        }
-                        return -Integer.compare(arg0.getValue().FilmLength, arg1.getValue().FilmLength);
-                    }
-                } );
-                break;
-            case 5:
-                Collections.sort( ToSort, new Comparator<Map.Entry<String, Content>>()
-                {
-                    @Override
-                    public int compare(Entry<String, Content> arg0, Entry<String, Content> arg1) {
-                        if (dsc)
-                        {
-                            return Integer.compare(arg0.getValue().Score, arg1.getValue().Score);
-                        }
-                        return -Integer.compare(arg0.getValue().Score, arg1.getValue().Score);
-                    }
-                } );
-                break;
+            Map.Entry ob = (Map.Entry)it.next();
+            ToSort.add(ob.getValue().Name);
+            it.remove();
         }
-        list<String> ret;
-        for( Entry<String, Content> i : ToSort)
-        {
-            ret.add(i.getValue)
-        }
-
+        java.util.Collections.sort(ToSort)
         return ToSort;
     }
 
