@@ -122,7 +122,13 @@ public class Database {
             ToSort.add(ob.getValue().Name);
             it.remove();
         }
-        java.util.Collections.sort(ToSort)
+        if (!dsc) {
+            java.util.Collections.sort(ToSort);
+        }
+        else 
+        {
+            Collections.sort(list ,Collections.reverseOrder());
+        }
         return ToSort;
     }
 
